@@ -1,0 +1,3 @@
+include ':BlockDetect'
+include ':app'
+rootProject.name = "APM"
