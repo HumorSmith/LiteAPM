@@ -10,9 +10,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         findViewById<Button>(R.id.sample_text).setOnClickListener {
-            Thread.sleep(1400)
+            waitTest()
         }
 
+    }
+
+
+    val lock = java.lang.Object()
+    fun waitTest() {
+        synchronized(lock) {
+            try {
+               Thread.sleep(100000)
+            } catch (e: InterruptedException) {
+                e.printStackTrace()
+            }
+        }
     }
 
 }

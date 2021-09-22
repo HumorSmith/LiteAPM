@@ -7,7 +7,7 @@ import com.jhzl.blockdetect.listener.BlockListener
 object BlockDetectInstall {
 
 
-    fun install(context: Context): BlockDetectApi? {
+    fun install(context: Context): BlockDetectApi {
         return install(context, HandlerBlockDetect(context))
     }
 
