@@ -1,5 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'kotlin'
+apply plugin: "com.vanniktech.maven.publish"
+apply plugin:  'com.vanniktech.maven.publish.base'
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation gradleApi()
