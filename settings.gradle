@@ -1,3 +1,4 @@
+include ':AsmBlockDetect'
 include ':AnrDetect'
 include ':BlockDetect'
 include ':app'

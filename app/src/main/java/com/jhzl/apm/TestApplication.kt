@@ -14,14 +14,17 @@ class TestApplication : Application() {
     }
 
     override fun onCreate() {
+        Log.d(TAG,"start")
         super.onCreate()
+
 //        BlockDetectInstall.install(this).detectBlock(block = {
 //            Log.d(TAG, "detect block =>\n$it")
 //        }).threshHold = 1000
 
-        AnrDetectInstall.install(this).detectAnr(block = {
-            Log.d(TAG, "detect anr =>\n$it")
-        })
+//        AnrDetectInstall.install(this).detectAnr(block = {
+//            Log.d(TAG, "detect anr =>\n$it")
+//        })
+        Log.d(TAG,"end")
 
     }
 }

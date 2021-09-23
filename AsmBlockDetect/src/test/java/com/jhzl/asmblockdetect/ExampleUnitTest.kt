@@ -1,6 +1,5 @@
-package com.jhzl.apm
+package com.jhzl.asmblockdetect
 
-import android.util.Log
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -14,11 +13,5 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
-    }
-
-    @Test
-    fun testLog(){
-        Log.d("testLog","startTime =>"+System.currentTimeMillis())
-
     }
 }
