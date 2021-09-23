@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-//    id 'asm-detect'
 }
+
 
 android {
     compileSdkVersion 30
