@@ -1,3 +1,5 @@
+include ':MemoryDetect'
+include ':MemoryDetect'
 include ':AsmBlockDetect'
 include ':AnrDetect'
 include ':BlockDetect'

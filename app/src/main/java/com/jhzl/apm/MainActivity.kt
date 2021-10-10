@@ -3,28 +3,40 @@ package com.jhzl.apm
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findViewById<Button>(R.id.sample_text).setOnClickListener {
-            waitTest()
+        findViewById<Button>(R.id.big_memory_btn).setOnClickListener {
+            createBigArray()
         }
+        findViewById<Button>(R.id.anr_btn).setOnClickListener {
+            waitLock()
+        }
+
+        findViewById<Button>(R.id.block_btn).setOnClickListener {
+            blockTest()
+        }
+
 
     }
 
 
-    val lock = java.lang.Object()
-    fun waitTest() {
+    private fun blockTest() {
+        Thread.sleep(2000)
+    }
+
+    var lock = java.lang.Object()
+    private fun waitLock() {
         synchronized(lock) {
-            try {
-               Thread.sleep(100000)
-            } catch (e: InterruptedException) {
-                e.printStackTrace()
-            }
+            lock.wait()
         }
+    }
+
+
+    private fun createBigArray() {
+        val fixedSizeArr = arrayOfNulls<Int>(1000000)
     }
 
 }

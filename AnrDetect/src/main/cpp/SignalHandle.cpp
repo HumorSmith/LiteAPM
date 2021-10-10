@@ -46,16 +46,17 @@ void registerSignal() {
     sigaddset(&set, SIGQUIT);
     LOGD("pthread_sigmask before");
     //SIG_UNBLOCK 清空内存中的，据用户设置的数据，对内核中的数据进行解除阻塞，就是解除内核中set的最,失败直接返回errorNo
-    if (0 != (r = pthread_sigmask(SIG_UNBLOCK, &set, NULL))) return;
+    if (0 != (r = sigprocmask(SIG_UNBLOCK, &set, NULL))) return;
     //register new signal handler for SIGQUIT(注册新的SIGQUIT捕获函数)
     memset(&act, 0, sizeof(act));
+    //sa_mask表示，执行捕捉函数式，屏蔽的信号，这里屏蔽所有的信号
     sigfillset(&act.sa_mask);
     act.sa_sigaction = signalHandler;
     act.sa_flags = SA_RESTART | SA_SIGINFO;
     LOGD("pthread_sigmask after");
     if (0 != sigaction(SIGQUIT, &act, NULL)) {
         //注册SIG_QUIT失败，清空内核中的sigaction
-        pthread_sigmask(SIG_SETMASK, NULL, NULL);
+        sigprocmask(SIG_SETMASK, NULL, NULL);
         return ;
     }
     LOGD("Signal handler installed.");
